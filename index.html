@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="app.js"></script>
+		<style>
+	        body    { padding-top:100px; }
+	    </style>
+	</head>
+	<body ng-app="myApp" ng-controller="mainCtrl as myCtrl">
+
+		<div class="container">
+  			<div class="row">
+	    		<div class="col-md-3">
+	    			
+	    		</div>
+	    		<div class="col-md-6">
+	    			
+	    			<form name="myCtrl.myForm" ng-submit="myCtrl.submitForm()" novalidate>
+					    <div class="form-group" ng-class="{ 'has-error' :myCtrl.myForm.name.$invalid&&myCtrl.submitted}">
+					        <label for="name">Name</label>
+					        <input type="text" class="form-control" id="name" ng-model="myCtrl.formData.name" name="name" placeholder="Enter Your Name" required>
+
+					        <div ng-show="myCtrl.myForm.name.$invalid && myCtrl.submitted">
+					        	<p ng-show="myCtrl.myForm.name.$error.required" class="help-block">Name is Required</p>
+					        </div>
+
+
+					    </div>
+					    <div class="form-group" ng-class="{ 'has-error' :myCtrl.myForm.username.$invalid && myCtrl.submitted}">
+					        <label for="username">Username</label>
+					        <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="myCtrl.formData.username" required="" minlength="3" maxlength="15">
+
+							<div ng-show="myCtrl.myForm.username.$invalid && myCtrl.submitted">
+					        	<p ng-show="myCtrl.myForm.username.$error.required" class="help-block">username is Required</p>
+					        	<p ng-show="myCtrl.myForm.username.$error.minlength" class="help-block">username is too short</p>
+					        	<p ng-show="myCtrl.myForm.username.$error.maxlength" class="help-block">username is too long</p>
+					        </div>
+
+					    </div>
+					    <div class="form-group" ng-class="{ 'has-error' :myCtrl.myForm.email.$invalid && myCtrl.submitted}">
+					        <label for="email">Email</label>
+					        <input type="email" class="form-control" name="email" id="email" ng-model="myCtrl.formData.email" placeholder="Email" required>
+
+							<div ng-show="myCtrl.myForm.email.$invalid && myCtrl.submitted">
+					        	<p ng-show="myCtrl.myForm.email.$error.required" class="help-block">Email is Required</p>
+					        	<p ng-show="myCtrl.myForm.email.$error.email" class="help-block">Email is invalid</p>
+					        </div>
+
+					    </div>
+					    <div class="form-group" ng-class="{ 'has-error' :myCtrl.myForm.password.$invalid && myCtrl.submitted}">
+					        <label for="password">Password</label>
+					        <input type="text" class="form-control" id="password" name="password" placeholder="Password" ng-model="myCtrl.formData.password" required minlength="6" maxlength="15" pattern="(?=.*\d)(?=.*\W+)(?=.*[A-Z])(?=.*[a-z]).*$">
+					        <div ng-show="myCtrl.myForm.password.$invalid && myCtrl.submitted">
+					        	<p ng-show="myCtrl.myForm.password.$error.required" class="help-block">Password is Required</p>
+					        	<p ng-show="myCtrl.myForm.password.$error.minlength" class="help-block">Password is too short</p>
+					        	<p ng-show="myCtrl.myForm.password.$error.maxlength" class="help-block">Password is too long</p>
+					        	<p ng-show="myCtrl.myForm.password.$error.pattern" class="help-block">Password must contain one number one lowercase one uppercase and one special charecter</p>
+					        </div>
+					    </div>
+					    <button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+
+	    		</div>
+	    		<div class="col-md-3">
+	    		
+	    		</div>
+    		</div>
+    	</div>
+	</body>
+</html>
